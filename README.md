@@ -7,21 +7,21 @@ Any contributions are more than welcome.
 
 More to come soon.
 
-INSTALLATION INSTRUCTIONS
+INSTALLATION INSTRUCTIONS\n
 
-You need
-Python 2.7+
-Pip
+You need\n
+Python 2.7+\n
+Pip\n
 Download the repository from https://github.com/muce/newbrain
-Then, pip install -r requirements.txt
+Then, pip install -r requirements.txt\n
 
 
-OPERATION
+OPERATION/n
 
-python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
-python manage.py runserver
+python manage.py db init\n
+python manage.py db migrate\n
+python manage.py db upgrade\n
+python manage.py runserver\n
 
 
 Thanks all you nice people X
