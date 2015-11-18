@@ -1,0 +1,805 @@
+{
+    "version": "0.2.0",
+    "rest_api": {
+        "components": {
+            "accounts": {
+                "name": "Account",
+                "url": "Accounts",
+                "attributes": [
+                    "sid",
+                    "friendly_name",
+                    "status",
+                    "account_balance",
+                    "date_created",
+                    "date_updated",
+                    "type",
+                    "time_zone",
+                    "subresource_uris",
+                    "uri",
+                    "max_outbound_limit"
+                ],
+                "create_params": {},
+                "parent_resources": []
+            },
+            "usages": {
+                "name": "Usage",
+                "url": "Usages",
+                "attributes": [
+                    "sid",
+                    "product",
+                    "day",
+                    "month",
+                    "year",
+                    "quantity",
+                    "averagecost",
+                    "totalcost",
+                    "uri"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "filter_params": [
+                    "Day",
+                    "Month",
+                    "Year",
+                    "Product"
+                ]
+            },
+            "notifications": {
+                "name": "Notification",
+                "url": "Notifications",
+                "attributes": [
+                    "log",
+                    "response_headers",
+                    "request_method",
+                    "date_updated",
+                    "message_text",
+                    "request_variables",
+                    "account_sid",
+                    "message_date",
+                    "response_body",
+                    "call_sid",
+                    "sid",
+                    "date_created",
+                    "request_url",
+                    "error_code",
+                    "api_version",
+                    "more_info"
+                ],
+                "parent_resources": [
+                    "accounts",
+                    "calls"
+                ],
+                "create_params": {}
+            },
+            "recordings": {
+                "name": "Recording",
+                "url": "Recordings",
+                "attributes": [
+                    "date_updated",
+                    "call_sid",
+                    "sid",
+                    "duration",
+                    "date_created",
+                    "recording_url",
+                    "api_version",
+                    "account_sid"
+                ],
+                "parent_resources": [
+                    "accounts",
+                    "calls"
+                ],
+                "create_params": {
+                    "record": "Record",
+                    "time_limit": "TimeLimit",
+                    "callback_url": "CallbackUrl"
+                }
+            },
+            "sms_messages": {
+                "name": "SMSMessage",
+                "url": "SMS/Messages",
+                "attributes": [
+                    "body",
+                    "status",
+                    "direction",
+                    "date_updated",
+                    "price",
+                    "from",
+                    "account_sid",
+                    "to",
+                    "sid",
+                    "date_sent",
+                    "date_created",
+                    "api_version",
+                    "uri"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "status_callback": "StatusCallback",
+                    "from": "From",
+                    "to": "To",
+                    "body": "Body"
+                },
+                "filter_params": [
+                    "To",
+                    "From"
+                ]
+            },
+            "faxes": {
+                "name": "Faxes",
+                "url": "Faxes",
+                "attributes": [
+                    "url",
+                    "status",
+                    "direction",
+                    "date_updated",
+                    "price",
+                    "from",
+                    "account_sid",
+                    "to",
+                    "sid",
+                    "date_sent",
+                    "date_created",
+                    "api_version",
+                    "uri"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "status_callback": "StatusCallback",
+                    "status_callback_method": "StatusCallbackMethod",
+                    "from": "From",
+                    "to": "To",
+                    "url": "Url"
+                },
+                "filter_params": [
+                    "To",
+                    "From"
+                ]
+            },
+            "transcriptions": {
+                "name": "Transcription",
+                "url": "Transcriptions",
+                "attributes": [
+                    "status",
+                    "recording_sid",
+                    "date_updated",
+                    "price",
+                    "transcribe_callback",
+                    "audio_url",
+                    "duration",
+                    "callback_method",
+                    "transcription_text",
+                    "uri",
+                    "account_sid",
+                    "sid",
+                    "date_created",
+                    "type",
+                    "api_version"
+                ],
+                "parent_resources": [
+                    "accounts",
+                    "recordings"
+                ],
+                "create_params": {
+                    "audio_url": "AudioUrl",
+                    "quality": "Quality",
+                    "transcribe_callback": "TranscribeCallback",
+                    "callback_method": "CallbackMethod"
+                },
+                "filter_params": [
+                    "Status",
+                    "DateTranscribed"
+                ]
+            },
+            "calls": {
+                "name": "Call",
+                "url": "Calls",
+                "attributes": [
+                    "status",
+                    "direction",
+                    "from",
+                    "uri",
+                    "date_updated",
+                    "answered_by",
+                    "start_time",
+                    "phone_number_sid",
+                    "parent_call_sid",
+                    "account_sid",
+                    "to",
+                    "forwarded_from",
+                    "end_time",
+                    "sid",
+                    "duration",
+                    "date_created",
+                    "price",
+                    "api_version",
+                    "subresource_uris",
+                    "caller_id_blocked"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "from": "From",
+                    "to": "To",
+                    "url": "Url",
+                    "method" : "Method",
+                    "timeout" : "Timeout",
+                    "send_digits" : "PlayDtmf",
+                    "status_callback" : "StatusCallback",
+                    "status_callback_method" : "StatusCallbackMethod",
+                    "fallback_url" : "FallbackUrl",
+                    "fallback_method" : "FallbackMethod",
+                    "heartbeat_url" : "HeartbeatUrl",
+                    "heartbeat_method" : "HeartbeatMethod",
+                    "forwarded_from" : "ForwardedFrom",
+                    "hide_caller_id" : "HideCallerId",
+                    "record" : "Record",
+                    "record_callback" : "RecordCallback",
+                    "record_callback_method" : "RecordCallbackMethod",
+                    "transcribe" : "Transcribe",
+                    "transcribe_callback" : "TranscribeCallback",
+                    "straight_to_voicemail": "StraightToVoicemail",
+                    "if_machine" : "IfMachine",
+                    "if_machine_url" : "IfMachineUrl",
+                    "if_machine_method" : "IfMachineMethod"
+                },
+                "update_params": {
+                    "status": "Status",
+                    "play_dtmf": "PlayDtmf",
+                    "play_dtmf_leg": "PlayDtmfLeg",
+                    "url": "Url"
+                },
+                "filter_params": [
+                    "To",
+                    "From",
+                    "DisableFaxDirections"
+                ]
+            },
+            "plays": {
+                "name": "Play",
+                "url": "Play",
+                "attributes": [
+                    "audio_url",
+                    "legs",
+                    "mix",
+                    "length",
+                    "loop"
+                ],
+                "parent_resources": [
+                    "calls"
+                ],
+                "create_params": {
+                    "audio_url": "AudioUrl",
+                    "legs": "Legs",
+                    "mix": "Mix",
+                    "length": "Length",
+                    "loop": "Loop"
+                }
+            },
+            "effects": {
+                "name": "Effect",
+                "url": "Effect",
+                "attributes": [
+                    "audio_direction",
+                    "pitch",
+                    "pitch_semi_tones",
+                    "pitch_octaves",
+                    "rate",
+                    "autotune_tune",
+                    "autotune_shift"
+                ],
+                "parent_resources": [
+                    "calls"
+                ],
+                "create_params": {
+                    "audio_direction": "AudioDirection",
+                    "pitch": "Pitch",
+                    "pitch_semi_tones": "PitchSemiTones",
+                    "pitch_octaves": "PitchOctaves",
+                    "rate": "Rate",
+                    "autotune_tune": "AutotuneTune",
+                    "autotune_shift": "AutotuneShift"
+                }
+            },
+            "carrier": {
+                "name": "Carrier",
+                "url": "Carrier",
+                "attributes": [
+                    "phone_number",
+                    "date_updated",
+                    "price",
+                    "cic_code",
+                    "country",
+                    "uri",
+                    "account_sid",
+                    "carrier",
+                    "is_mobile",
+                    "sid",
+                    "date_created",
+                    "api_version",
+                    "carrier_lookups"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "phone_number": "PhoneNumber"
+                },
+                "filter_params": [
+                    "PhoneNumber"
+                ]
+            },
+            "cnam_dips": {
+                "name": "CNAM",
+                "url": "CNAM",
+                "attributes": [
+                    "phone_number",
+                    "body",
+                    "sid",
+                    "date_updated",
+                    "date_created",
+                    "price",
+                    "uri",
+                    "api_version",
+                    "account_sid"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "phone_number": "PhoneNumber"
+                },
+                "filter_params": [
+                    "PhoneNumber"
+                ]
+            },
+            "incoming_phone_numbers": {
+                "name": "IncomingPhoneNumber",
+                "url": "IncomingPhoneNumbers",
+                "attributes": [
+                    "date_updated",
+                    "voice_url",
+                    "rate",
+                    "voice_fallback_method",
+                    "capabilities",
+                    "sid",
+                    "heartbeat_method",
+                    "type",
+                    "status_callback_method",
+                    "voice_fallback_url",
+                    "phone_number",
+                    "heartbeat_url",
+                    "trunk",
+                    "sms_url",
+                    "voice_method",
+                    "voice_caller_id_lookup",
+                    "friendly_name",
+                    "uri",
+                    "sms_fallback_url",
+                    "account_sid",
+                    "sms_method",
+                    "api_version",
+                    "sms_fallback_method",
+                    "date_created",
+                    "status_callback",
+                    "fax_url",
+                    "fax_method"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "friendly_name": "FriendlyName",
+                    "phone_number": "PhoneNumber",
+                    "voice_url": "VoiceUrl",
+                    "voice_method": "VoiceMethod",
+                    "voice_fallback_method": "VoiceFallbackMethod",
+                    "sms_url": "SmsUrl",
+                    "sms_method": "SmsMethod",
+                    "sms_fallback_url": "SmsFallbackUrl",
+                    "sms_fallback_method": "SmsFallbackMethod",
+                    "hangup_callback": "HangupCallback",
+                    "hangup_callback_method": "HangupCallbackMethod"
+                },
+                "update_params": {
+                    "voice_url": "VoiceUrl",
+                    "voice_url": "VoiceUrl"
+                },
+                "filter_params": [
+                    "Contains",
+                    "AreaCode",
+                    "InRegion",
+                    "InPostalCode"
+                ]
+            },
+            "available_phone_numbers": {
+                "name": "AvailablePhoneNumber",
+                "url": "AvailablePhoneNumbers",
+                "attributes": [
+                    "country_code"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {}
+            },
+            "local": {
+                "name": "Local",
+                "url": "Local",
+                "attributes": [
+                    "friendly_name",
+                    "phone_number",
+                    "lata",
+                    "rate_center",
+                    "latitude",
+                    "longitude",
+                    "country_code",
+                    "npa",
+                    "exchange",
+                    "city",
+                    "region",
+                    "postal_code",
+                    "iso_country",
+                    "type",
+                    "setup_cost",
+                    "monthly_cost",
+                    "voice_enabled",
+                    "sms_enabled",
+                    "supports_forwarded_from",
+                    "date_updated"
+                ],
+                "parent_resources": [
+                    "available_phone_numbers"
+                ],
+                "create_params": {},
+                "filter_params": [
+                    "Contains",
+                    "AreaCode",
+                    "InRegion",
+                    "InPostalCode"
+                ]
+            },
+            "tollfree": {
+                "name": "TollFree",
+                "url": "TollFree",
+                "attributes": [
+                    "friendly_name",
+                    "phone_number",
+                    "lata",
+                    "rate_center",
+                    "latitude",
+                    "longitude",
+                    "country_code",
+                    "npa",
+                    "exchange",
+                    "city",
+                    "region",
+                    "postal_code",
+                    "iso_country",
+                    "type",
+                    "setup_cost",
+                    "monthly_cost",
+                    "voice_enabled",
+                    "sms_enabled",
+                    "supports_forwarded_from",
+                    "date_updated"
+                ],
+                "parent_resources": [
+                    "available_phone_numbers"
+                ],
+                "create_params": {},
+                "filter_params": [
+                    "Contains",
+                    "AreaCode",
+                    "InRegion",
+                    "InPostalCode"
+                ]
+            },
+            "conferences": {
+                "name": "Conference",
+                "url": "Conferences",
+                "attributes": [
+                    "members",
+                    "run_time",
+                    "name",
+                    "member_count",
+                    "date_updated",
+                    "date_created",
+                    "uri",
+                    "account_sid"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {}
+            },
+            "applications": {
+                "name": "Applications",
+                "url": "Applications",
+                "attributes": [
+                    "date_updated",
+                    "voice_url",
+                    "voice_fallback_method",
+                    "sid",
+                    "heartbeat_method",
+                    "status_callback_method",
+                    "voice_fallback_url",
+                    "heartbeat_url",
+                    "sms_url",
+                    "voice_method",
+                    "voice_caller_id_lookup",
+                    "friendly_name",
+                    "uri",
+                    "sms_fallback_url",
+                    "account_sid",
+                    "sms_method",
+                    "api_version",
+                    "sms_fallback_method",
+                    "date_created",
+                    "status_callback",
+                    "fax_url",
+                    "fax_method"
+                ],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {
+                    "friendly_name": "FriendlyName"
+                }
+            },
+            "client_token": {
+                "name": "ClientToken",
+                "url": "Clients/Tokens",
+                "attributes": [
+                    "sid",
+                    "application_sid",
+                    "date_created",
+                    "date_updated",
+                    "account_sid",
+                    "presence_status",
+                    "client_password",
+                    "nickname",
+                    "session_id",
+                    "remote_ip",
+                    "uri"
+                ],
+                "parent_resources": [
+                    "applications"
+                ],
+                "create_params": {"nickname": "Nickname"}
+            },
+            "fraud": {
+                "name": "Fraud",
+                "url": "Fraud",
+                "attributes": [],
+                "parent_resources": [
+                    "accounts"
+                ],
+                "create_params": {}
+            }
+
+        },
+        "pagination": [
+            "page",
+            "num_pages",
+            "page_size",
+            "total",
+            "start",
+            "end",
+            "uri",
+            "first_page_uri",
+            "previous_page_uri",
+            "next_page_uri",
+            "last_page_uri"
+        ]
+    },
+    "inboundxml": {
+        "verbs": {
+            "Response": {
+                "attributes": [],
+                "nesting": [
+                    "Say",
+                    "Play",
+                    "Gather",
+                    "Record",
+                    "Dial",
+                    "Hangup",
+                    "Redirect",
+                    "Reject",
+                    "Pause",
+                    "Sms",
+                    "Ping",
+                    "PlayLastRecording"
+                ],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/response/",
+                "blank": false
+            },
+            "Say": {
+                "attributes": [
+                    "voice",
+                    "loop",
+                    "language"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/say/",
+                "blank": false
+            },
+            "Play": {
+                "attributes": [
+                    "loop"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/play/",
+                "blank": false
+            },
+            "Gather": {
+                "attributes": [
+                    "action",
+                    "method",
+                    "finishOnKey",
+                    "timeout",
+                    "numDigits"
+                ],
+                "nesting": [
+                    "Say",
+                    "Play",
+                    "Pause"
+                ],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/gather/",
+                "blank": true
+            },
+            "Record": {
+                "attributes": [
+                    "action",
+                    "method",
+                    "timeout",
+                    "finishOnKey",
+                    "transcribe",
+                    "transcribeCallback",
+                    "transcribeQuality",
+                    "playBeep",
+                    "direction",
+                    "background",
+                    "fileFormat"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/record/",
+                "blank": true
+            },
+            "Dial": {
+                "attributes": [
+                    "action",
+                    "method",
+                    "timeout",
+                    "hangupOnStar",
+                    "timeLimit",
+                    "callerId",
+                    "hideCallerId",
+                    "callerName",
+                    "dialMusic",
+                    "callbackUrl",
+                    "callbackMethod",
+                    "confirmSound",
+                    "digitsMatch",
+                    "straightToVm",
+                    "heartbeatUrl",
+                    "heartbeatMethod",
+                    "forwardedFrom",
+                    "ifMachine",
+                    "ifMachineUrl",
+                    "ifMachineMethod"
+                ],
+                "nesting": [
+                    "Number",
+                    "Conference",
+                    "Sip"
+                ],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/dial/",
+                "blank": false
+            },
+            "Number": {
+                "attributes": [
+                    "sendDigits",
+                    "method",
+                    "url"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/dial/number/",
+                "blank": false
+            },
+            "Conference": {
+                "attributes": [
+                    "muted",
+                    "beep",
+                    "startConferenceOnEnter",
+                    "endConferenceOnEnter",
+                    "waitUrl",
+                    "waitMethod",
+                    "hangupOnStar",
+                    "callbackUrl",
+                    "method",
+                    "waitSound",
+                    "waitSoundMethod",
+                    "digitsMatch",
+                    "stayAlone"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/dial/conference/",
+                "blank": false
+            },
+            "Sip": {
+                "attributes": [
+                    "action",
+                    "method"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/dial/sip/",
+                "blank": false
+            },
+            "Hangup": {
+                "attributes": [
+                    "schedule"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/hangup/",
+                "blank": false
+            },
+            "Redirect": {
+                "attributes": [
+                    "method"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/redirect/",
+                "blank": true
+            },
+            "Reject": {
+                "attributes": [
+                    "reason"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/reject/",
+                "blank": true
+            },
+            "Pause": {
+                "attributes": [
+                    "length"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/pause/",
+                "blank": true
+            },
+            "Sms": {
+                "attributes": [
+                    "to",
+                    "from",
+                    "action",
+                    "method",
+                    "statusCallback",
+                    "statusCallbackMethod"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/sms/sms/",
+                "blank": false
+            },
+            "Ping": {
+                "attributes": [
+                    "method"
+                ],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/ping/",
+                "blank": false
+            },
+            "PlayLastRecording": {
+                "attributes": [],
+                "nesting": [],
+                "docs_url": "http://www.telapi.com/docs/api/inboundxml/voice/playlastrecording/",
+                "blank": true
+            }
+        }
+    }
+}

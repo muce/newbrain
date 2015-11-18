@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Comic Index{% endblock %}
+
+{% block page_content %}
+{%- if current_user.is_authenticated() %}
+<div class="row">
+	<div class="large-12 columns">
+		Logged In
+		<hr/>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-12 columns">
+		<p>
+            Logged In
+		</p>
+	</div>
+</div>
+{% else %}
+<h3>Guest - Unauthorised. Please <a href="{{ url_for('auth.register') }}">Register</a> or <a href="{{ url_for('auth.login') }}">Log In</a></h3>
+{% endif %}
+{% endblock %}
+
+
+
+
+
