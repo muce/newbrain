@@ -7,4 +7,17 @@ Any contributions are more than welcome.
 
 More to come soon.
 
+INSTALLATION INSTRUCTIONS
+
+You need
+Python 2.7+
+Pip
+Download the repository from https://github.com/muce/newbrain
+Then, pip install -r requirements.txt
+
+OPERATION
+
+python manage.py runserver
+
+
 Thanks all you nice people X
