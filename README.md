@@ -15,8 +15,12 @@ Pip
 Download the repository from https://github.com/muce/newbrain
 Then, pip install -r requirements.txt
 
+
 OPERATION
 
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
 python manage.py runserver
 
 
