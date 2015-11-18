@@ -1,5 +1,1 @@
-# comicindex
-<<<<<<< HEAD
-=======
-Comic Index
->>>>>>> cedaf49354e4f0a7dd80d8d36be7d4067e238f0a
+89515da2f41161cfbf528d051c3b4077cdf23c15
