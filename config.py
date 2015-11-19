@@ -30,6 +30,10 @@ class Config:
     MAIL_SENDER = 'NewBrain Admin <imuce9@gmail.com>'
     MAIL_ADMIN = 'imuce9@gmail.com'
 
+    # Celery configuration
+    CELERY_BROKER_URL = 'redis://localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
     @staticmethod
     def init_app(app):
         pass

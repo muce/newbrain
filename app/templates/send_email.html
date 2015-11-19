@@ -1,15 +1,17 @@
-<html>
-  <head>
-    <title>Flask + Celery Examples</title>
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}NewBrain{% endblock %}
+
+{% block page_content %}
     <style>
         .progress {
             width: 100%;
             text-align: center;
         }
     </style>
-  </head>
-  <body>
-    <h1>Flask + Celery Examples</h1>
+<h2>Send Email</h2>
+<div class="col-md-4">
     <h2>Example 1: Send Asynchronous Email</h2>
     {% for message in get_flashed_messages() %}
     <p style="color: red;">{{ message }}</p>
@@ -82,5 +84,8 @@
             $('#start-bg-job').click(start_long_task);
         });
     </script>
-  </body>
-</html>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

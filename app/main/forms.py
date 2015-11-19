@@ -10,6 +10,10 @@ class TargetForm(Form):
     website = StringField('Website URL', validators=[Length(0, 64)])
     submit = SubmitField('Submit')
 
+class EmailForm(Form):
+    email = StringField('Email Address', validators=[Length(0, 64)])
+    submit = SubmitField('Submit')
+
 
 # User Forms
 class NameForm(Form):
