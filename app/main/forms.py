@@ -9,7 +9,7 @@ class TargetForm(Form):
     email = StringField('Email Address', validators=[Length(0, 64)])
     website = StringField('Website URL', validators=[Length(0, 64)])
     submit = SubmitField('Submit')
-    
+
 
 # User Forms
 class NameForm(Form):
