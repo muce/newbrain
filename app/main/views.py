@@ -16,6 +16,35 @@ def index():
                             main_menu_url = 'http://localhost:5000/menu')
 
 
+@main.route('/targets', methods=['GET', 'POST'])
+def targets():
+    app = current_app._get_current_object()
+    phone = None
+    email = None
+    website = None
+    form = TargetForm()
+    if form.validate_on_submit():
+        phone = form.phone.data
+        email = form.email.data
+        website = form.website.data
+        new_one = Target.query.filter_by(phone=phone).first()
+        if new_one is None:
+            target = Target(phone=phone, email=email, website=website)
+            db.session.add(target)
+            flash("Added Target: "+str(phone)+", "+str(email)+", "+str(website))
+        else:
+            flash("Didn't add Target: "+str(phone)+", "+str(email)+", "+str(website))
+        form.phone.data = ''
+        form.email.data = ''
+        form.website.data = ''
+    return render_template('/targets.html',
+                            user = 'user',
+                            form = form,
+                            targets = Target.query.all(),
+                            phone = phone,
+                            email = email,
+                            website = website)
+
 """
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required

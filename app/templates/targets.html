@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}NewBrain{% endblock %}
+
+{% block page_content %}
+<h2>Targets</h2>
+<div class="col-md-4">
+    <ul>
+    {% for target in targets %}
+        <li>Target: {{target.phone}}, {{target.email}}, {{target.website}} | <a href="/">edit</a> | <a href="/">delete</a></li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

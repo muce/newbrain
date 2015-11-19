@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: 2130c22a9f61
+Revision ID: 543f0b1baf3d
 Revises: None
-Create Date: 2015-11-18 20:44:56.085681
+Create Date: 2015-11-19 07:46:36.077067
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '2130c22a9f61'
+revision = '543f0b1baf3d'
 down_revision = None
 
 from alembic import op
@@ -25,6 +25,16 @@ def upgrade():
     sa.UniqueConstraint('name')
     )
     op.create_index(op.f('ix_roles_default'), 'roles', ['default'], unique=False)
+    op.create_table('target',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('phone', sa.String(length=64), nullable=True),
+    sa.Column('email', sa.String(length=64), nullable=True),
+    sa.Column('website', sa.String(length=64), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('phone'),
+    sa.UniqueConstraint('website')
+    )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=64), nullable=True),
@@ -50,6 +60,7 @@ def downgrade():
     op.drop_index(op.f('ix_users_username'), table_name='users')
     op.drop_index(op.f('ix_users_email'), table_name='users')
     op.drop_table('users')
+    op.drop_table('target')
     op.drop_index(op.f('ix_roles_default'), table_name='roles')
     op.drop_table('roles')
     ### end Alembic commands ###

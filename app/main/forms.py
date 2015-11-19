@@ -3,6 +3,14 @@ from wtforms import StringField, SubmitField, TextAreaField, SelectField, FileFi
 from wtforms.validators import DataRequired, Length
 
 
+# Target Forms
+class TargetForm(Form):
+    phone = StringField('Phone Number', validators=[Length(0, 64)])
+    email = StringField('Email Address', validators=[Length(0, 64)])
+    website = StringField('Website URL', validators=[Length(0, 64)])
+    submit = SubmitField('Submit')
+    
+
 # User Forms
 class NameForm(Form):
     name = StringField('What is your name?', validators=[DataRequired()])

@@ -6,6 +6,7 @@ class Config:
 
     SECRET_KEY = os.environ.get('SECRET_KEY') or '234DFGDFdfgtf234234dfgdFGJRETGFHFG456gfhFGH'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     # Uploads
     UPLOAD_FOLDER = basedir

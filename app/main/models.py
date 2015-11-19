@@ -6,6 +6,15 @@ from app import db, login_manager
 from datetime import datetime
 
 
+# Targets
+class Target(db.Model):
+    __tablename__ = 'target'
+    id = db.Column(db.Integer, primary_key=True)
+    phone = db.Column(db.String(64), unique=True)
+    email = db.Column(db.String(64), unique=True)
+    website = db.Column(db.String(64), unique=True)
+
+
 # Users
 class Role(db.Model):
     __tablename__ = 'roles'
